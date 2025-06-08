@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Hind:wght@400;500&display=swap');
+
+:root {
+  --primary-color: #3b82f6; /* A modern blue */
+  --secondary-color: #1d4ed8;
+  --background-color: #f3f4f6; /* Light gray */
+  --surface-color: #ffffff;
+  --user-msg-bg: #dbeafe; /* Lighter blue for user */
+  --bot-msg-bg: #ffffff;
+  --text-color-primary: #1f2937;
+  --text-color-secondary: #4b5563;
+  --border-color: #e5e7eb;
+  --border-radius: 12px;
+  --font-sans: 'Inter', sans-serif;
+  --font-hindi: 'Hind', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--background-color);
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: var(--text-color-primary);
+}
+
+.chat-wrapper {
+  width: 95%;
+  max-width: 800px;
+  height: 95vh;
+  background: var(--surface-color);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+header {
+  background: var(--surface-color);
+  color: var(--text-color-primary);
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+header p {
+  margin: 4px 0 0;
+  font-size: 0.9rem;
+  color: var(--text-color-secondary);
+}
+
+#chat-container {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.message {
+  padding: 12px 18px;
+  border-radius: var(--border-radius);
+  max-width: 85%;
+  word-wrap: break-word;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.user-message {
+  background-color: var(--primary-color);
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+
+.bot-message {
+  background-color: var(--bot-msg-bg);
+  border: 1px solid var(--border-color);
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+
+.bot-message .hindi-text {
+  font-family: var(--font-hindi);
+  font-size: 1.1em;
+  font-weight: 500;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border-color);
+  color: var(--text-color-secondary);
+}
+
+.bot-message .disclaimer {
+  font-size: 0.8em;
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #fefce8; /* Light yellow */
+  border-left: 4px solid #facc15; /* Amber */
+  white-space: pre-wrap;
+  border-radius: 4px;
+  color: #713f12;
+}
+
+.loading-indicator {
+  color: var(--text-color-secondary);
+  font-style: italic;
+  padding: 12px 18px;
+}
+.loading-indicator::after {
+  content: '...';
+  animation: dots 1.4s infinite;
+  display: inline-block;
+}
+@keyframes dots {
+  0%,
+  20% {
+    content: '.';
+  }
+  40% {
+    content: '..';
+  }
+  60% {
+    content: '...';
+  }
+}
+
+#input-container {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border-top: 1px solid var(--border-color);
+  background: #f9fafb;
+}
+
+#text-input {
+  flex-grow: 1;
+  border: 1px solid var(--border-color);
+  background: white;
+  border-radius: var(--border-radius);
+  padding: 12px 18px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+#text-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+#input-container button {
+  background: transparent;
+  color: var(--text-color-secondary);
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  margin-left: 8px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  transition: background-color 0.2s, color 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#input-container button:hover {
+  background-color: #e5e7eb;
+}
+#send-btn {
+  background-color: var(--primary-color);
+  color: white;
+}
+#send-btn:hover {
+  background-color: var(--secondary-color);
+}
+#fill-form-btn {
+  border-radius: var(--border-radius);
+  width: auto;
+  height: 48px;
+  padding: 0 20px;
+  margin-right: 8px;
+  margin-left: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background-color: var(--text-color-secondary);
+  color: white;
+}
+#fill-form-btn:hover {
+  background-color: var(--text-color-primary);
+}
+
+#record-btn.recording {
+  color: #ef4444; /* Red */
+  background-color: #fee2e2;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* FIR Form Styling */
+.fir-form-container {
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  margin-top: 15px;
+  padding: 0;
+  background: #fafafa;
+}
+.fir-form-container h3 {
+  background: var(--background-color);
+  padding: 12px 18px;
+  margin: 0;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 1.1rem;
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+}
+.fir-form-item {
+  padding: 12px 18px;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--border-color);
+}
+.fir-form-item:last-child {
+  border-bottom: none;
+}
+.fir-form-item .label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-color-secondary);
+  margin-bottom: 4px;
+}
+.fir-form-item .value {
+  font-size: 1rem;
+  color: var(--text-color-primary);
+  font-family: var(--font-hindi);
+  font-weight: 500;
+}
+.fir-form-item .value.english {
+  font-family: var(--font-sans);
+  font-weight: 400;
+}
+
+audio {
+  width: 100%;
+  margin-top: 15px;
+  height: 40px;
+}
+audio::-webkit-media-controls-panel {
+  background-color: #f3f4f6;
+  border-radius: var(--border-radius);
+}
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-mute-button {
+  background-color: var(--primary-color);
+  border-radius: 50%;
+}
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+  color: var(--text-color-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.9em;
+}

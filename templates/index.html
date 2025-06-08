@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nyay Sahayak - AI Legal Advisor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="chat-wrapper">
+        <header>
+            <h1>Nyay Sahayak (न्याय सहायक)</h1>
+            <p>Your AI Legal Advisor</p>
+        </header>
+        <div id="chat-container">
+        </div>
+        <div id="input-container">
+            <button id="fill-form-btn" title="Fill a Demo FIR Form">
+                <i class="fas fa-file-alt"></i> Fill Form
+            </button>
+            <input type="text" id="text-input" placeholder="Type your legal query or send a voice message...">
+            <button id="send-btn" title="Send Text"><i class="fas fa-paper-plane"></i></button>
+            <button id="record-btn" title="Record Voice"><i class="fas fa-microphone"></i></button>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>
